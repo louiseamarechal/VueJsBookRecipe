@@ -10,11 +10,16 @@ console.log(recipes);
 </script>
 
 <template>
-  <ul>
-    <li v-for="recipe in recipes">
-      <DisplaySingleRecipe :recipe="recipe"/>
-    </li>
-  </ul>
+    <ul>
+      <li v-for="recipe in recipes" class="recipes">
+        <DisplaySingleRecipe :recipe="recipe"/>
+      </li>
+    </ul>
 </template>
 
-<style></style>
+<style>
+.recipes {
+  height: 30%;
+  list-style-type: none;
+}
+</style>
