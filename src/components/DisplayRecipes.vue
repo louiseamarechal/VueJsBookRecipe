@@ -1,20 +1,24 @@
 <script setup>
 import FetchData from "../utils/FetchData";
-import DisplaySingleRecipe from "./DisplaySingleRecipe.vue"
+import DisplaySingleRecipe from "./DisplaySingleRecipe.vue";
 
-const recipes = await FetchData(
+const props = defineProps({
+  recipes: Array,
+});
+
+props.recipes.value = await FetchData(
   "https://www.themealdb.com/api/json/v1/1/random.php",
   10
 );
-console.log(recipes);
+console.log(props.recipes.value);
 </script>
 
 <template>
-    <ul>
-      <li v-for="recipe in recipes" class="recipes">
-        <DisplaySingleRecipe :recipe="recipe"/>
-      </li>
-    </ul>
+  <ul>
+    <li v-for="recipe in props.recipes.value" class="recipes">
+      <DisplaySingleRecipe :recipe="recipe" />
+    </li>
+  </ul>
 </template>
 
 <style>

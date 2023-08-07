@@ -1,7 +1,10 @@
 <script setup>
-import { Suspense } from "vue";
+import { Suspense, ref } from "vue";
 import DisplayRecipes from "./components/DisplayRecipes.vue";
 import AddRecipe from "./components/AddRecipe.vue";
+
+const recipes = ref([])
+
 </script>
 
 <template>
@@ -9,10 +12,10 @@ import AddRecipe from "./components/AddRecipe.vue";
     <h1>Welcome to your Book Recipe :</h1>
   </div>
   <div class="add-recipe">
-    <AddRecipe />
+    <AddRecipe :recipes="recipes"/>
   </div>
     <Suspense>
-      <DisplayRecipes />
+      <DisplayRecipes :recipes="recipes"/>
     </Suspense>
 </template>
 
